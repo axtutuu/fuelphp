@@ -19,10 +19,4 @@
 <div class="actions">
     <?php echo Form::submit('submit', 'confirm'); ?>
 </div>
-    <?php echo Form::close(); ?>
-
-
-
-
-
-
+<?php echo Form::close(); ?>

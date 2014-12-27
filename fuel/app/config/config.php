@@ -78,9 +78,9 @@ return array(
 	/**
 	 * Localization & internationalization settings
 	 */
-	// 'language'           => 'en', // Default language
-	// 'language_fallback'  => 'en', // Fallback language when file isn't available for default language
-	// 'locale'             => 'en_US', // PHP set_locale() setting, null to not set
+	 'language'           => 'ja', // Default language
+	 'language_fallback'  => 'en', // Fallback language when file isn't available for default language
+	 'locale'             => 'ja_JP.utf8', // PHP set_locale() setting, null to not set
 
 	/**
 	 * Internal string encoding charset
@@ -95,6 +95,8 @@ return array(
 	 */
 	// 'server_gmt_offset'  => 0,
 	// 'default_timezone'   => null,
+	 'server_gmt_offset'  => 3600*9,
+	 'default_timezone'   => 'Asia/Tokyo',
 
 	/**
 	 * Logging Threshold.  Can be set to any of the following:
@@ -106,9 +108,9 @@ return array(
 	 * Fuel::L_INFO
 	 * Fuel::L_ALL
 	 */
-	// 'log_threshold'    => Fuel::L_WARNING,
-	// 'log_path'         => APPPATH.'logs/',
-	// 'log_date_format'  => 'Y-m-d H:i:s',
+	 'log_threshold'    => Fuel::L_ALL,
+	 'log_path'         => APPPATH.'logs/',
+	 'log_date_format'  => 'Y-m-d H:i:s',
 
 	/**
 	 * Security settings
