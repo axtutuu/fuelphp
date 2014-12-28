@@ -25,9 +25,9 @@ class Model_Mail extends Model
 
         $data['from']      = $post['email'];
         $data['from_name'] = $post['name'];
-        $data['to']        = Config::get(contact_form.admin_email);
-        $data['to_name']   = Config::get(contact_form.admin_name);
-        $data['subject']   = Config::get(contact_form.subject);
+        $data['to']        = Config::get('contact_form.admin_email');
+        $data['to_name']   = Config::get('contact_form.admin_name');
+        $data['subject']   = Config::get('contact_form.subject');
 
         $ip                = Input::ip();
         $agent             = Input::user_agent();
