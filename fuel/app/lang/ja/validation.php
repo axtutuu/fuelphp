@@ -18,4 +18,5 @@ return array(
 	'valid_string'    => 'The valid string rule :rule(:param:1) failed for field :label',
 	'required_with'   => 'The field :label must contain a value if :param:1 contains a value.',
 	'valid_date'      => 'The field :label must contain a valid formatted date.',
+	'no_tab_and_new_line' => ':label 欄にはタブや改行を含めないでください。',
 );

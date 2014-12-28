@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Form extends Controller_template
+class Controller_Form extends Controller_Public
 {
     public function before()
     {
@@ -21,11 +21,13 @@ class Controller_Form extends Controller_template
         $val->add('name', 'name')
             ->add_rule('trim')
             ->add_rule('required')
+            ->add_rule('no_tab_and_newline')
             ->add_rule('max_length', 50);
 
         $val->add('email', 'email')
             ->add_rule('trim')
             ->add_rule('required')
+            ->add_rule('no_tab_and_newline')
             ->add_rule('max_length', 100)
             ->add_rule('valid_email');
 
@@ -38,7 +40,7 @@ class Controller_Form extends Controller_template
 
     public function  action_confirm()
     {
-        $val = $this->forge_validation();
+        $val = $this->forge_validation()->add_callable('MyValidationRules');
 
         if($val->run())
         {
@@ -62,7 +64,7 @@ class Controller_Form extends Controller_template
             throw new HttpInvalidInputException('ページの遷移が正しくありません。');
         }
 
-        $val = $this->forge_validation();
+        $val = $this->forge_validation()->add_callable('MyValidationRules');
 
         if ( ! $val->run())
         {

@@ -94,7 +94,8 @@ return array(
 	 * default_timezone		optional, if you want to change the server's default timezone
 	 */
 	// 'server_gmt_offset'  => 0,
-	// 'default_timezone'   => null,
+
+ //エラーをログに記録メソッド化    // 'default_timezone'   => null,
 	 'server_gmt_offset'  => 3600*9,
 	 'default_timezone'   => 'Asia/Tokyo',
 
@@ -148,6 +149,10 @@ return array(
 		 * How much is dependant on how much input data there is.
 		 */
 		// 'input_filter'  => array(),
+        'input_filter'  => array(
+            'MyinputFilters::check_encoding',
+            'MyinputFilters::check_control',
+        ),
 
 		/**
 		 * This output filter can be any normal PHP function as well as 'xss_clean'
