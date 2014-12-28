@@ -126,10 +126,15 @@ class Controller_Form extends Controller_Public
         unset($post['submit']);
 
         //データベースへ保存
-        $model_form = Model_Form::forge()->set($post);
-        list($id, $rows) = $model_form->save();
 
-        if ($rows != 1)
+        //ORMパッケージ変更の反映
+        //$model_form = Model_Form::forge()->set($post);
+        //list($id, $rows) = $model_form->save();
+        $model_form = Model_Form::forge($post);
+        $ret = $model_form->save();
+
+        //if ($rows != 1)
+        if ( ! $ret)
         {
             Log::error('データベース保存エラー', __METHOD__);
 
@@ -141,7 +146,6 @@ class Controller_Form extends Controller_Public
             $this->template->content->set_safe('html_form', $form->build('form/confirm'));
             return;
         }
-
 
         //メール送信処理
         try
