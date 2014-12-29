@@ -2,36 +2,37 @@
 <br>
 <?php if ($forms): ?>
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Comment</th>
-			<th>Ip address</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-<?php foreach ($forms as $item): ?>		<tr>
+  <thead>
+    <tr>
+      <th>日時</th>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>コメント</th>
+      <th>Ip</th>
+    </tr>
+  </thead>
+  <tbody>
+<?php foreach ($forms as $item): ?>    <tr>
 
-			<td><?php echo $item->name; ?></td>
-			<td><?php echo $item->email; ?></td>
-			<td><?php echo $item->comment; ?></td>
-			<td><?php echo $item->ip_address; ?></td>
-			<td>
-				<?php echo Html::anchor('admin/form/view/'.$item->id, 'View'); ?> |
-				<?php echo Html::anchor('admin/form/edit/'.$item->id, 'Edit'); ?> |
-				<?php echo Html::anchor('admin/form/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
+      <td><?php echo Date::forge($item->created_at)->format('mysql'); ?></td>
+      <td><?php echo $item->name; ?></td>
+      <td><?php echo $item->email; ?></td>
+      <td><?php echo Str::truncate($item->comment, 5, '...', true); ?></td>
+      <td><?php echo $item->ip_address; ?></td>
+      <td>
+        <?php echo Html::anchor('admin/form/view/'.$item->id, '詳細'); ?> |
+        <?php echo Html::anchor('admin/form/edit/'.$item->id, 'Edit'); ?> |
+        <?php echo Html::anchor('admin/form/delete/'.$item->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
 
-			</td>
-		</tr>
-<?php endforeach; ?>	</tbody>
+      </td>
+    </tr>
+<?php endforeach; ?>  </tbody>
 </table>
 
 <?php else: ?>
-<p>No Forms.</p>
+<p>お問い合わせはありません。</p>
 
 <?php endif; ?><p>
-	<?php echo Html::anchor('admin/form/create', 'Add new Form', array('class' => 'btn btn-success')); ?>
+  <?php echo Html::anchor('admin/form/create', 'Add new Form', array('class' => 'btn btn-success')); ?>
 
 </p>
