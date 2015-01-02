@@ -12,6 +12,7 @@ class Controller_Form extends Controller_Public
     {
         $form = $this->forge_form();
 
+        //エラー処理などの場合値の保持
         if (Input::method() === 'POST')
         {
             $form->repopulate();
@@ -120,7 +121,7 @@ class Controller_Form extends Controller_Public
         }
         $post = $val->validated();
         //$data = $this->build_mail($post);
-       
+
         $post['ip_address'] = Input::ip();
         $post['user_agent'] = Input::user_agent();
         unset($post['submit']);
